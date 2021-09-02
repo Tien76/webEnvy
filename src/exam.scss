@@ -1,0 +1,47 @@
+.exam {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  background: aqua;
+  display: flex;
+  flex-direction: row;
+
+  * {
+    // margin: 5px;
+    // padding: 5px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  .slider {
+    background: red;
+    align-items: stretch;
+    width: 200px;
+    display: flex;
+  }
+  .groupA {
+    width: 100%;
+    * {
+      height: 33%;
+    }
+    .header {
+      margin: auto;
+      display: flex;
+      background: pink;
+    }
+    .content {
+      background: violet;
+      display: flex;
+    }
+    .footer {
+      background: green;
+      display: flex;
+    }
+  }
+}
+.text {
+  margin: auto;
+}
