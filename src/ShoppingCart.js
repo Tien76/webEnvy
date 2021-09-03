@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import React from "react";
 import cart from "./cart-shopping.png";
 import "./ShoppingCart.scss";
 

@@ -1,0 +1,10 @@
+.bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: inherit;
+  * {
+    font-size: 22px;
+    font-weight: 7px;
+    margin: 50px;
+  }
+}
