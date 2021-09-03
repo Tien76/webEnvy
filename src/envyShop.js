@@ -1,8 +1,51 @@
+import { useState } from "react";
 import Layout, { Header } from "antd/lib/layout/layout";
+import Slider from "react-slick";
+import { Button } from "antd";
+import ShoppingCart from "./ShoppingCart.js";
 import "./envyShop.scss";
+
 // import logoEnvy from "./logoEnvy.png";
+// TODO: map, forEch
 
 function EnvyShop() {
+  const [count, setCount] = useState(0);
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      src: "https://product.hstatic.net/1000163008/product/11_9c8797db852142dcaaebe74e765ee1a5_large.jpg",
+      name: "San pham 1",
+      price: 1232,
+      number: 0,
+    },
+
+    {
+      id: 2,
+      src: "https://product.hstatic.net/1000163008/product/11_9c8797db852142dcaaebe74e765ee1a5_large.jpg",
+      name: "San pham 222",
+      price: 5654,
+      number: 0,
+    },
+  ]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: false,
+  };
+
+  const addToCart = (idx) => {
+    setCount(count + 1);
+
+    let newProducts = [...products]; // spread operation.. copy array in nodejs
+    newProducts[idx].number += 1;
+    setProducts(newProducts);
+  };
+
   return (
     <div className="EnvyShop">
       <Layout style={{ minHeight: "100vh" }}>
@@ -28,10 +71,13 @@ function EnvyShop() {
                 <div className="cart">
                   <div class="cart-name">Cart</div>
                 </div>
+                <div>
+                  <ShoppingCart count={count} />
+                </div>
               </div>
             </div>
           </Header>
-          <body>
+          <body className="main-body">
             <nav className="bar">
               <div>SHIRT</div>
               <div>PANTS & SKIRTS</div>
@@ -43,28 +89,68 @@ function EnvyShop() {
               <div>ORDER LOOKUP</div>
               <div>MORE</div>
             </nav>
-            <img
-              className="display-top-body-header"
-              src="https://theme.hstatic.net/1000163008/1000348202/14/slide_5.jpg?v=493"
-              alt="display"
-            />
+            <Slider {...settings}>
+              <div>
+                <h3>
+                  <img
+                    className="display-top-body-header"
+                    src="https://theme.hstatic.net/1000163008/1000348202/14/slide_5.jpg?v=493"
+                    alt="display"
+                  />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img
+                    className="display-top-body-header"
+                    src="https://theme.hstatic.net/1000163008/1000348202/14/slide_4.jpg?v=493"
+                    alt="display"
+                  />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img
+                    className="display-top-body-header"
+                    src="https://theme.hstatic.net/1000163008/1000348202/14/slide_2.jpg?v=493"
+                    alt="display"
+                  />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img
+                    className="display-top-body-header"
+                    src="https://theme.hstatic.net/1000163008/1000348202/14/slide_3.jpg?v=493"
+                    alt="display"
+                  />
+                </h3>
+              </div>
+            </Slider>
             <div className="border-to-product" />
             <div className="text-block">NEW PRODUCT</div>
             <div className="new-item">
               <div className="block-new-item">
-                <div>
+                {products.map((product, index) => (
                   <div>
-                    <img
-                      className="product-img"
-                      src="https://product.hstatic.net/1000163008/product/11_9c8797db852142dcaaebe74e765ee1a5_large.jpg"
-                      alt="item1"
-                    />
+                    <div>
+                      <img
+                        className="product-img"
+                        src={product.src}
+                        alt="item1"
+                      />
+                    </div>
+                    <div className="text-item-product">
+                      <div className="text-item">{product.name}</div>
+                      <div className="text-price">{product.price} VND</div>
+                      <Button onClick={() => addToCart(index)}>
+                        Thêm vô giỏ hàng
+                      </Button>
+                      <div>Số lượng: {product.number}</div>
+                    </div>
                   </div>
-                  <div className="text-item-product">
-                    <div className="text-item">Brown Bear T-shirt</div>
-                    <div className="text-price">139,000 VND</div>
-                  </div>
-                </div>
+                ))}
+
                 <div>
                   <div>
                     <img

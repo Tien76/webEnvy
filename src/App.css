@@ -40,30 +40,6 @@
   position: relative !important;
 }
 
-.box-img-shopping {
-  height: 100px;
-  width: 200px;
-  position: absolute;
-  right: 10px;
-  display: block;
-}
-
-.box-number-shopping {
-  display: block;
-  text-align: center;
-  font-size: 15px;
-  position: absolute;
-  right: 50px;
-  font-weight: bold;
-  color: white;
-
-  top: 0px;
-  padding: 5px;
-  width: 60px;
-  height: 30px;
-  background: gray;
-  border-radius: 30px;
-}
 .box_choise_1 {
   height: 100px;
   width: 200px;
